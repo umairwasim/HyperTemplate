@@ -23,7 +23,7 @@ namespace Rhodos.Core
             CameraTransform.position = cameraPose.position;
             CameraTransform.rotation = cameraPose.rotation;
         }
-        
+
         private static IEnumerator LerpFromTo(Matrix4x4 src, Matrix4x4 dest, float duration)
         {
             float startTime = Time.time;
@@ -60,7 +60,7 @@ namespace Rhodos.Core
             Camera.orthographic = false;
             Camera.ResetProjectionMatrix();
         }
-        
+
         private bool _isCameraStopped;
         [ButtonMethod] private void StopCamera() => _isCameraStopped = true;
         public IEnumerator BindTargetTransform(Transform target, float speed, bool lerpRotation = true)
