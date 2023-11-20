@@ -21,17 +21,20 @@ namespace Rhodos.Core
 
         public IEnumerator ChangeUI(UIScreen uiScreen)
         {
-            if (ActiveScreen) yield return StartCoroutine(ActiveScreen.PlayOutAnimation());
+            if (ActiveScreen)
+                yield return StartCoroutine(ActiveScreen.PlayOutAnimation());
             ActiveScreen = uiScreen;
-            if (ActiveScreen) yield return StartCoroutine(ActiveScreen.PlayInAnimation());
+            if (ActiveScreen)
+                yield return StartCoroutine(ActiveScreen.PlayInAnimation());
         }
+
         public IEnumerator ChangeUI(MainScreens screen)
         {
             UIScreen uiScreen = screen switch
             {
                 MainScreens.MainMenu => mainMenu,
-                MainScreens.Success  => success,
-                MainScreens.Fail     => fail,
+                MainScreens.Success => success,
+                MainScreens.Fail => fail,
                 _ => throw new ArgumentOutOfRangeException(nameof(screen), screen, null)
             };
 
@@ -56,7 +59,5 @@ namespace Rhodos.Core
         [SerializeField] private MainMenu mainMenu;
         [SerializeField] private SuccessScreen success;
         [SerializeField] private FailScreen fail;
-        
-        
     }
 }
